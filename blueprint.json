@@ -1,0 +1,69 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "CAMP MARL – Shop-Vorschau",
+		"description": "WordPress + WooCommerce mit dem CAMP-MARL-Theme, dem Plugin camp-marl-core und Testdaten. Läuft vollständig im Browser.",
+		"author": "CAMP MARL"
+	},
+	"landingPage": "/",
+	"preferredVersions": {
+		"php": "8.3",
+		"wp": "7.1"
+	},
+	"features": {
+		"networking": true
+	},
+	"login": false,
+	"steps": [
+		{
+			"step": "defineWpConfigConsts",
+			"consts": {
+				"WP_ENVIRONMENT_TYPE": "local",
+				"WP_DEBUG": false,
+				"DISABLE_WP_CRON": true
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "woocommerce.11.3.1.zip"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "unzip",
+			"zipFile": {
+				"resource": "url",
+				"url": "https://raw.githubusercontent.com/fztw5dxr6x-design/camp-marl-preview/main/camp-marl-preview.zip"
+			},
+			"extractToPath": "/wordpress"
+		},
+		{
+			"step": "setSiteLanguage",
+			"language": "de_DE"
+		},
+		{
+			"step": "activatePlugin",
+			"pluginPath": "camp-marl-core/camp-marl-core.php"
+		},
+		{
+			"step": "activateTheme",
+			"themeFolderName": "camp-marl"
+		},
+		{
+			"step": "wp-cli",
+			"command": "wp eval-file /wordpress/preview-setup/setup-site.php"
+		},
+		{
+			"step": "wp-cli",
+			"command": "wp eval-file /wordpress/preview-setup/seed-test-data.php"
+		},
+		{
+			"step": "wp-cli",
+			"command": "wp rewrite flush"
+		}
+	]
+}
