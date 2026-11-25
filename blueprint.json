@@ -63,6 +63,10 @@
 		},
 		{
 			"step": "wp-cli",
+			"command": "wp eval-file /wordpress/preview-setup/single-product.php"
+		},
+		{
+			"step": "wp-cli",
 			"command": "wp rewrite flush"
 		}
 	]
