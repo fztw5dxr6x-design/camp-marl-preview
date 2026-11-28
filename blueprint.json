@@ -37,7 +37,7 @@
 			"step": "unzip",
 			"zipFile": {
 				"resource": "url",
-				"url": "https://raw.githubusercontent.com/fztw5dxr6x-design/camp-marl-preview/main/camp-marl-preview.zip?v=8680605"
+				"url": "https://raw.githubusercontent.com/fztw5dxr6x-design/camp-marl-preview/main/camp-marl-preview.zip?v=054c803"
 			},
 			"extractToPath": "/wordpress"
 		},
